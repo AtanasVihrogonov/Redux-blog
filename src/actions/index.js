@@ -1,3 +1,7 @@
+/*
+ * 1. Now we got our fetchPosts action creator put pogether in our actions file
+ */
+
 // make the API request
 import axios from 'axios';
 
