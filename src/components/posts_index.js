@@ -19,7 +19,9 @@ class PostIndex extends Component {
       // render jsx that represent paticular posts
       return (
         <li className='list-group-item' key={post.id}>
-          {post.title}
+          <Link to={`/posts/${post.id}`}>
+            {post.title}
+          </Link>
         </li>
       );
     });

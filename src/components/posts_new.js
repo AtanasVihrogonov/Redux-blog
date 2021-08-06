@@ -6,9 +6,7 @@ import { createPost } from '../actions';
 
 class PostsNew extends Component {
   renderField(field) {
-    const {
-      meta: { touched, error },
-    } = field;
+    const {meta: { touched, error }} = field;
     const className = `form-group ${touched && error ? 'has-danger' : ''}`;
 
     return (
@@ -26,7 +24,10 @@ class PostsNew extends Component {
   }
 
   onSubmit = (values) => {
-    this.props.createPost(values);
+    this.props.createPost(values, () => {
+      this.props.history.push('/')
+
+    });
   };
 
   render() {
@@ -34,7 +35,11 @@ class PostsNew extends Component {
 
     return (
       <form onSubmit={handleSubmit(this.onSubmit)}>
-        <Field label='Title' name='title' component={this.renderField} />
+        <Field
+          label='Title'
+          name='title'
+          component={this.renderField}
+        />
         <Field
           label='Categories'
           name='categories'
@@ -62,13 +67,13 @@ function validate(values) {
 
   // Validate the inputs from 'values'
   if (!values.title) {
-    errors.title = 'Enter a title';
+    errors.title = 'Enter a title!';
   }
   if (!values.categories) {
-    errors.categories = 'Enter some categories';
+    errors.categories = 'Enter some categories!';
   }
   if (!values.content) {
-    errors.content = 'Enter some content please';
+    errors.content = 'Enter some content please!';
   }
 
   // If errors is empty, the form is fine to submit

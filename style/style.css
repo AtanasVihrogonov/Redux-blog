@@ -1,7 +1,11 @@
 .text-xs-right {
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 form a {
   margin-left: 10px;
+}
+
+.btn {
+  margin: 10px 0;
 }
